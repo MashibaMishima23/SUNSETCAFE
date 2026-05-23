@@ -8,10 +8,12 @@ import Order from './pages/Order'
 import Franchise from './pages/Franchise'
 import NotFound from './pages/NotFound'
 import ChatBot from './components/ChatBot'
+import AnnouncementBanner from './components/AnnouncementBanner'
 
 export default function App() {
   return (
-    <BrowserRouter basename="/sunset-cafe">
+    <BrowserRouter>
+      <AnnouncementBanner />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

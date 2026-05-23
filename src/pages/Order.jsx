@@ -61,7 +61,9 @@ const STEPS = ['Branch', 'Your Details', 'Payment']
 
 export default function Order() {
   const [cart, setCart] = useState({})
-  const [activeCategory, setActiveCategory] = useState('Latte Series')
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [priceFilter, setPriceFilter] = useState('All')
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [step, setStep] = useState(0)
   const [selectedBranch, setSelectedBranch] = useState(null)
@@ -157,7 +159,16 @@ Please prepare this order for pickup.`,
     })
   }
 
-  const allItems = menu.find(c => c.category === activeCategory)?.items || []
+  const allMenuItems = menu.flatMap(c => c.items)
+  const baseItems = activeCategory === 'All' ? allMenuItems : (menu.find(c => c.category === activeCategory)?.items || [])
+  const filteredItems = baseItems
+    .filter(item => !searchQuery || item.name.toLowerCase().includes(searchQuery.toLowerCase()) || item.desc.toLowerCase().includes(searchQuery.toLowerCase()))
+    .filter(item => {
+      if (priceFilter === 'Under ₱60') return item.price < 60
+      if (priceFilter === '₱60–₱65') return item.price >= 60 && item.price <= 65
+      if (priceFilter === '₱70+') return item.price >= 70
+      return true
+    })
 
   return (
     <>
@@ -171,18 +182,65 @@ Please prepare this order for pickup.`,
       <div className="order-layout">
         {/* Menu */}
         <div className="order-menu">
-          <div className="order-tabs">
-            {menu.map(c => (
-              <button key={c.category}
-                className={`order-tab${activeCategory === c.category ? ' active' : ''}`}
-                onClick={() => setActiveCategory(c.category)}>
-                {c.category}
-              </button>
-            ))}
+          {/* Search bar */}
+          <div className="menu-search-wrap">
+            <span className="menu-search-icon">🔍</span>
+            <input
+              type="text"
+              className="menu-search-input"
+              placeholder="Search drinks..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="menu-search-clear" onClick={() => setSearchQuery('')}>✕</button>
+            )}
           </div>
+
+          {/* Category + Price filters */}
+          <div className="menu-filters-row">
+            <div className="order-tabs">
+              {['All', ...menu.map(c => c.category)].map(cat => (
+                <button
+                  key={cat}
+                  className={`order-tab${activeCategory === cat ? ' active' : ''}`}
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="price-filter-wrap">
+              {['All', 'Under ₱60', '₱60–₱65', '₱70+'].map(p => (
+                <button
+                  key={p}
+                  className={`price-filter-btn${priceFilter === p ? ' active' : ''}`}
+                  onClick={() => setPriceFilter(p)}
+                >
+                  {p}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Results count */}
+          <div className="menu-results-count">
+            {filteredItems.length} drink{filteredItems.length !== 1 ? 's' : ''} found
+            {(searchQuery || priceFilter !== 'All' || activeCategory !== 'All') && (
+              <button className="menu-clear-filters" onClick={() => { setSearchQuery(''); setPriceFilter('All'); setActiveCategory('All') }}>
+                Clear filters ✕
+              </button>
+            )}
+          </div>
+
           <ScrollReveal>
             <div className="order-grid">
-              {allItems.map(item => {
+              {filteredItems.length === 0 ? (
+                <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '48px 0', fontFamily: "'Hepta Slab', serif", color: '#aaa' }}>
+                  <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
+                  <p>No drinks found. Try a different search or filter.</p>
+                </div>
+              ) : filteredItems.map(item => {
                 const qty = cart[item.id]?.qty || 0
                 return (
                   <div className="order-card" key={item.id}>
