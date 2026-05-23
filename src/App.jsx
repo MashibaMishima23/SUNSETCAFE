@@ -12,7 +12,7 @@ import AnnouncementBanner from './components/AnnouncementBanner'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/SUNSETCAFE">
       <AnnouncementBanner />
       <Routes>
         <Route path="/" element={<Home />} />
