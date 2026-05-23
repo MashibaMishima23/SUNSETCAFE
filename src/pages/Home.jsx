@@ -1,3 +1,4 @@
+import { asset } from '../lib/assetUrl'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
@@ -7,23 +8,23 @@ import ScrollToTop from '../components/ScrollToTop'
 import ReviewSection from '../components/ReviewSection'
 
 const latteCards = [
-  { img: '/WHITE CHOCOLATE.png', name: 'WHITE CHOCOLATE LATTE', title: 'WHITE CHOCOLATE LATTE', ingredients: ['Espresso shot','White chocolate syrup','Fresh milk','Ice cubes','Whipped cream'], steps: 'Pull a shot of espresso. Stir in white chocolate syrup. Pour over ice, top with cold milk and a swirl of whipped cream.' },
-  { img: '/SPANISH LATTE.png', name: 'SPANISH LATTE', title: 'SPANISH LATTE', ingredients: ['Espresso shot','Condensed milk','Fresh milk','Ice cubes'], steps: 'Add condensed milk to a glass. Pour espresso over it. Fill with ice and top with fresh cold milk. Stir gently before drinking.' },
-  { img: '/AMERICANO.png', name: 'AMERICANO', title: 'AMERICANO', ingredients: ['Double espresso shot','Cold water','Ice cubes','Simple syrup (optional)'], steps: 'Pull a double espresso. Add cold water to dilute. Pour over ice for a clean, bold iced coffee experience.' },
-  { img: '/MATCHA MILK.png', name: 'MATCHA MILK', title: 'MATCHA MILK', ingredients: ['Ceremonial matcha powder','Fresh milk','Simple syrup','Ice cubes'], steps: 'Whisk matcha powder with a splash of hot water until smooth. Pour over ice, add syrup, then fill with cold milk.' },
-  { img: '/HAZELNUT.png', name: 'HAZELNUT', title: 'HAZELNUT LATTE', ingredients: ['Espresso shot','Hazelnut syrup','Fresh milk','Ice cubes'], steps: 'Combine espresso with hazelnut syrup. Pour over ice and finish with cold milk for a nutty, smooth iced latte.' },
-  { img: '/CARAMEL MACCHIATTO.png', name: 'CARAMEL MACCHIATO', title: 'CARAMEL MACCHIATO', ingredients: ['Espresso shot','Vanilla syrup','Fresh milk','Caramel drizzle','Ice cubes'], steps: 'Add vanilla syrup and milk to a glass of ice. Pour espresso on top and finish with a generous caramel drizzle.' },
-  { img: '/FRENCH VANILLA LATTE.png', name: 'FRENCH VANILLA LATTE', title: 'FRENCH VANILLA LATTE', ingredients: ['Espresso shot','French vanilla syrup','Fresh milk','Ice cubes','Vanilla powder (garnish)'], steps: 'Mix espresso with French vanilla syrup. Pour over ice, add cold milk, and dust with vanilla powder on top.' },
-  { img: '/strawberry milk.png', name: 'STRAWBERRY MILK', title: 'STRAWBERRY MILK', ingredients: ['Fresh strawberries','Strawberry syrup','Fresh milk','Ice cubes','Sugar (to taste)'], steps: 'Blend strawberries with syrup and sugar. Pour over ice and top with cold fresh milk for a fruity, creamy treat.' },
-  { img: '/MATCHA STRAWBERRY.png', name: 'STRAWBERRY MATCHA', title: 'STRAWBERRY MATCHA', ingredients: ['Ceremonial matcha powder','Strawberry syrup','Fresh milk','Ice cubes'], steps: 'Layer strawberry syrup at the bottom, add ice and milk, then slowly pour whisked matcha on top for a stunning two-tone drink.' },
-  { img: '/MATCHA LATTE.png', name: 'MATCHA LATTE', title: 'MATCHA LATTE', ingredients: ['Ceremonial matcha powder','Oat or fresh milk','Simple syrup','Ice cubes'], steps: 'Whisk matcha with hot water until frothy. Sweeten with syrup, pour over ice, and finish with your choice of cold milk.' },
+  { img: asset('/WHITE CHOCOLATE.png'), name: 'WHITE CHOCOLATE LATTE', title: 'WHITE CHOCOLATE LATTE', ingredients: ['Espresso shot','White chocolate syrup','Fresh milk','Ice cubes','Whipped cream'], steps: 'Pull a shot of espresso. Stir in white chocolate syrup. Pour over ice, top with cold milk and a swirl of whipped cream.' },
+  { img: asset('/SPANISH LATTE.png'), name: 'SPANISH LATTE', title: 'SPANISH LATTE', ingredients: ['Espresso shot','Condensed milk','Fresh milk','Ice cubes'], steps: 'Add condensed milk to a glass. Pour espresso over it. Fill with ice and top with fresh cold milk. Stir gently before drinking.' },
+  { img: asset('/AMERICANO.png'), name: 'AMERICANO', title: 'AMERICANO', ingredients: ['Double espresso shot','Cold water','Ice cubes','Simple syrup (optional)'], steps: 'Pull a double espresso. Add cold water to dilute. Pour over ice for a clean, bold iced coffee experience.' },
+  { img: asset('/MATCHA MILK.png'), name: 'MATCHA MILK', title: 'MATCHA MILK', ingredients: ['Ceremonial matcha powder','Fresh milk','Simple syrup','Ice cubes'], steps: 'Whisk matcha powder with a splash of hot water until smooth. Pour over ice, add syrup, then fill with cold milk.' },
+  { img: asset('/HAZELNUT.png'), name: 'HAZELNUT', title: 'HAZELNUT LATTE', ingredients: ['Espresso shot','Hazelnut syrup','Fresh milk','Ice cubes'], steps: 'Combine espresso with hazelnut syrup. Pour over ice and finish with cold milk for a nutty, smooth iced latte.' },
+  { img: asset('/CARAMEL MACCHIATTO.png'), name: 'CARAMEL MACCHIATO', title: 'CARAMEL MACCHIATO', ingredients: ['Espresso shot','Vanilla syrup','Fresh milk','Caramel drizzle','Ice cubes'], steps: 'Add vanilla syrup and milk to a glass of ice. Pour espresso on top and finish with a generous caramel drizzle.' },
+  { img: asset('/FRENCH VANILLA LATTE.png'), name: 'FRENCH VANILLA LATTE', title: 'FRENCH VANILLA LATTE', ingredients: ['Espresso shot','French vanilla syrup','Fresh milk','Ice cubes','Vanilla powder (garnish)'], steps: 'Mix espresso with French vanilla syrup. Pour over ice, add cold milk, and dust with vanilla powder on top.' },
+  { img: asset('/strawberry milk.png'), name: 'STRAWBERRY MILK', title: 'STRAWBERRY MILK', ingredients: ['Fresh strawberries','Strawberry syrup','Fresh milk','Ice cubes','Sugar (to taste)'], steps: 'Blend strawberries with syrup and sugar. Pour over ice and top with cold fresh milk for a fruity, creamy treat.' },
+  { img: asset('/MATCHA STRAWBERRY.png'), name: 'STRAWBERRY MATCHA', title: 'STRAWBERRY MATCHA', ingredients: ['Ceremonial matcha powder','Strawberry syrup','Fresh milk','Ice cubes'], steps: 'Layer strawberry syrup at the bottom, add ice and milk, then slowly pour whisked matcha on top for a stunning two-tone drink.' },
+  { img: asset('/MATCHA LATTE.png'), name: 'MATCHA LATTE', title: 'MATCHA LATTE', ingredients: ['Ceremonial matcha powder','Oat or fresh milk','Simple syrup','Ice cubes'], steps: 'Whisk matcha with hot water until frothy. Sweeten with syrup, pour over ice, and finish with your choice of cold milk.' },
 ]
 
 const fruitySlides = [
-  { id: 0, bg: '#a01c1c', name: 'STRAWBERRY SODA', desc: 'A refreshing blend of sweet strawberries and sparkling soda, finished with a crisp, bubbly twist.', textBg: '/union1402-lr1o.svg', cup: '/STRAWBERRY.png', tab: '🍓 Strawberry', tabColor: '#a01c1c' },
-  { id: 1, bg: '#5b2c6f', name: 'GRAPE SODA', desc: 'A refreshing blend of sweet grapes and sparkling soda, finished with a crisp, bubbly twist.', textBg: '/union1257-mhb5.svg', cup: '/GRAPES.png', tab: '🍇 Grape', tabColor: '#5b2c6f' },
-  { id: 2, bg: '#1a6b3a', name: 'GREEN APPLE SODA', desc: 'A refreshing blend of crisp green apples and sparkling soda, finished with a tart, bubbly twist.', textBg: '/union1308-1jz6.svg', cup: '/GREEN APPLE.png', tab: '🍏 Green Apple', tabColor: '#1a6b3a' },
-  { id: 3, bg: '#154360', name: 'BLUEBERRY SODA', desc: 'A refreshing blend of ripe blueberries and sparkling soda, finished with a sweet, bubbly twist.', textBg: '/union1161-29ho.svg', cup: '/Blueberry.png', tab: '🫐 Blueberry', tabColor: '#154360' },
+  { id: 0, bg: '#a01c1c', name: 'STRAWBERRY SODA', desc: 'A refreshing blend of sweet strawberries and sparkling soda, finished with a crisp, bubbly twist.', textBg: asset('/union1402-lr1o.svg'), cup: asset('/STRAWBERRY.png'), tab: '🍓 Strawberry', tabColor: '#a01c1c' },
+  { id: 1, bg: '#5b2c6f', name: 'GRAPE SODA', desc: 'A refreshing blend of sweet grapes and sparkling soda, finished with a crisp, bubbly twist.', textBg: asset('/union1257-mhb5.svg'), cup: asset('/GRAPES.png'), tab: '🍇 Grape', tabColor: '#5b2c6f' },
+  { id: 2, bg: '#1a6b3a', name: 'GREEN APPLE SODA', desc: 'A refreshing blend of crisp green apples and sparkling soda, finished with a tart, bubbly twist.', textBg: asset('/union1308-1jz6.svg'), cup: asset('/GREEN APPLE.png'), tab: '🍏 Green Apple', tabColor: '#1a6b3a' },
+  { id: 3, bg: '#154360', name: 'BLUEBERRY SODA', desc: 'A refreshing blend of ripe blueberries and sparkling soda, finished with a sweet, bubbly twist.', textBg: asset('/union1161-29ho.svg'), cup: asset('/Blueberry.png'), tab: '🫐 Blueberry', tabColor: '#154360' },
 ]
 
 const testimonials = [
@@ -119,13 +120,13 @@ export default function Home() {
             <Link to="/contact" className="btn-outline">Contact Us</Link>
           </div>
           <div className="hero-social">
-            <img src="/ellipse1i259-wrl-200h.png" alt="Social" />
-            <img src="/ellipse2i259-krs-200h.png" alt="Social" />
-            <img src="/ellipse3i259-7wfe-200h.png" alt="Social" />
+            <img src={asset("/ellipse1i259-wrl-200h.png")} alt="Social" />
+            <img src={asset("/ellipse2i259-krs-200h.png")} alt="Social" />
+            <img src={asset("/ellipse3i259-7wfe-200h.png")} alt="Social" />
           </div>
         </div>
         <div className="hero-image">
-          <img src="/untitleddesign252597-naxf-700h.png" alt="Iced Coffee" />
+          <img src={asset("/untitleddesign252597-naxf-700h.png")} alt="Iced Coffee" />
         </div>
       </section>
 
@@ -135,7 +136,7 @@ export default function Home() {
       </div>
 
       {/* Band */}
-      <img src="/rectangle222597-pel-1500w.png" alt="" className="band" />
+      <img src={asset("/rectangle222597-pel-1500w.png")} alt="" className="band" />
 
       {/* Latte Series */}
       <ScrollReveal>
@@ -254,7 +255,7 @@ export default function Home() {
         </section>
       </ScrollReveal>
 
-      <Footer socialImg="/ellipse42596-lake-200h.png" />
+      <Footer socialImg={asset("/ellipse42596-lake-200h.png")} />
       <ScrollToTop />
     </>
   )

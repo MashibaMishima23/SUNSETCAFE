@@ -1,3 +1,4 @@
+import { asset } from '../lib/assetUrl'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ScrollReveal from '../components/ScrollReveal'
@@ -44,7 +45,7 @@ export default function About() {
             </div>
           </div>
           <div className="about-image">
-            <img src="/image6515506748690617795193787258417531898554177n11602-0vvd-600h.png" alt="About Sunset Cafe" />
+            <img src={asset("/image6515506748690617795193787258417531898554177n11602-0vvd-600h.png")} alt="About Sunset Cafe" />
           </div>
         </section>
       </ScrollReveal>
@@ -94,13 +95,13 @@ export default function About() {
           <h2 className="section-title" style={{ fontSize: 40, marginBottom: 40 }}>Meet the Founders</h2>
           <div className="team-grid">
             <div className="team-card">
-              <img src="/Dwight Ramos.jpg" alt="Dwight Ramos" className="team-photo" />
+              <img src={asset("/Dwight Ramos.jpg")} alt="Dwight Ramos" className="team-photo" />
               <h3 className="team-name">Dwight Ramos</h3>
               <span className="team-role">Co-Founder</span>
               <p className="team-bio">Passionate about building community spaces and making quality coffee accessible to everyone in Gingoog City.</p>
             </div>
             <div className="team-card">
-              <img src="/Kervy.jpg" alt="Kervy Y. Rubio" className="team-photo" />
+              <img src={asset("/Kervy.jpg")} alt="Kervy Y. Rubio" className="team-photo" />
               <h3 className="team-name">Kervy Y. Rubio</h3>
               <span className="team-role">Co-Founder</span>
               <p className="team-bio">Driven by a love for great flavors and the belief that a good drink can turn any ordinary evening into something special.</p>
@@ -109,7 +110,7 @@ export default function About() {
         </section>
       </ScrollReveal>
 
-      <Footer socialImg="/ellipse41601-9b3rj-200h.png" />
+      <Footer socialImg={asset("/ellipse41601-9b3rj-200h.png")} />
       <ScrollToTop />
     </>
   )

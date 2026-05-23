@@ -1,3 +1,4 @@
+import { asset } from '../lib/assetUrl'
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import Navbar from '../components/Navbar'
@@ -33,25 +34,25 @@ const menu = [
   {
     category: 'Latte Series',
     items: [
-      { id: 1, name: 'White Chocolate Latte', img: '/WHITE CHOCOLATE.png', price: 65, desc: 'Espresso with white chocolate syrup, fresh milk & whipped cream.' },
-      { id: 2, name: 'Spanish Latte', img: '/SPANISH LATTE.png', price: 60, desc: 'Espresso layered over condensed milk and fresh cold milk.' },
-      { id: 3, name: 'Americano', img: '/AMERICANO.png', price: 55, desc: 'Double espresso diluted with cold water over ice.' },
-      { id: 4, name: 'Matcha Milk', img: '/MATCHA MILK.png', price: 65, desc: 'Ceremonial matcha whisked smooth with fresh milk and syrup.' },
-      { id: 5, name: 'Hazelnut Latte', img: '/HAZELNUT.png', price: 65, desc: 'Espresso with hazelnut syrup and cold fresh milk.' },
-      { id: 6, name: 'Caramel Macchiato', img: '/CARAMEL MACCHIATTO.png', price: 70, desc: 'Vanilla syrup, milk, espresso, and a generous caramel drizzle.' },
-      { id: 7, name: 'French Vanilla Latte', img: '/FRENCH VANILLA LATTE.png', price: 65, desc: 'Espresso with French vanilla syrup, cold milk, and vanilla dust.' },
-      { id: 8, name: 'Strawberry Milk', img: '/strawberry milk.png', price: 60, desc: 'Fresh strawberries blended with syrup and cold fresh milk.' },
-      { id: 9, name: 'Strawberry Matcha', img: '/MATCHA STRAWBERRY.png', price: 70, desc: 'Layered strawberry syrup, milk, and whisked matcha on top.' },
-      { id: 10, name: 'Matcha Latte', img: '/MATCHA LATTE.png', price: 65, desc: 'Frothy ceremonial matcha sweetened and poured over cold milk.' },
+      { id: 1, name: 'White Chocolate Latte', img: asset('/WHITE CHOCOLATE.png'), price: 65, desc: 'Espresso with white chocolate syrup, fresh milk & whipped cream.' },
+      { id: 2, name: 'Spanish Latte', img: asset('/SPANISH LATTE.png'), price: 60, desc: 'Espresso layered over condensed milk and fresh cold milk.' },
+      { id: 3, name: 'Americano', img: asset('/AMERICANO.png'), price: 55, desc: 'Double espresso diluted with cold water over ice.' },
+      { id: 4, name: 'Matcha Milk', img: asset('/MATCHA MILK.png'), price: 65, desc: 'Ceremonial matcha whisked smooth with fresh milk and syrup.' },
+      { id: 5, name: 'Hazelnut Latte', img: asset('/HAZELNUT.png'), price: 65, desc: 'Espresso with hazelnut syrup and cold fresh milk.' },
+      { id: 6, name: 'Caramel Macchiato', img: asset('/CARAMEL MACCHIATTO.png'), price: 70, desc: 'Vanilla syrup, milk, espresso, and a generous caramel drizzle.' },
+      { id: 7, name: 'French Vanilla Latte', img: asset('/FRENCH VANILLA LATTE.png'), price: 65, desc: 'Espresso with French vanilla syrup, cold milk, and vanilla dust.' },
+      { id: 8, name: 'Strawberry Milk', img: asset('/strawberry milk.png'), price: 60, desc: 'Fresh strawberries blended with syrup and cold fresh milk.' },
+      { id: 9, name: 'Strawberry Matcha', img: asset('/MATCHA STRAWBERRY.png'), price: 70, desc: 'Layered strawberry syrup, milk, and whisked matcha on top.' },
+      { id: 10, name: 'Matcha Latte', img: asset('/MATCHA LATTE.png'), price: 65, desc: 'Frothy ceremonial matcha sweetened and poured over cold milk.' },
     ],
   },
   {
     category: 'Fruity Soda Series',
     items: [
-      { id: 11, name: 'Strawberry Soda', img: '/STRAWBERRY.png', price: 55, desc: 'Sweet strawberries with sparkling soda — crisp and bubbly.' },
-      { id: 12, name: 'Grape Soda', img: '/GRAPES.png', price: 55, desc: 'Sweet grapes with sparkling soda — crisp and bubbly.' },
-      { id: 13, name: 'Green Apple Soda', img: '/GREEN APPLE.png', price: 55, desc: 'Crisp green apples with sparkling soda — tart and bubbly.' },
-      { id: 14, name: 'Blueberry Soda', img: '/Blueberry.png', price: 55, desc: 'Ripe blueberries with sparkling soda — sweet and bubbly.' },
+      { id: 11, name: 'Strawberry Soda', img: asset('/STRAWBERRY.png'), price: 55, desc: 'Sweet strawberries with sparkling soda — crisp and bubbly.' },
+      { id: 12, name: 'Grape Soda', img: asset('/GRAPES.png'), price: 55, desc: 'Sweet grapes with sparkling soda — crisp and bubbly.' },
+      { id: 13, name: 'Green Apple Soda', img: asset('/GREEN APPLE.png'), price: 55, desc: 'Crisp green apples with sparkling soda — tart and bubbly.' },
+      { id: 14, name: 'Blueberry Soda', img: asset('/Blueberry.png'), price: 55, desc: 'Ripe blueberries with sparkling soda — sweet and bubbly.' },
     ],
   },
 ]
@@ -414,7 +415,7 @@ Please prepare this order for pickup.`,
                   {/* QR Code placeholder — replace /gcash-qr.png with your real QR */}
                   <div className="gcash-qr-wrap">
                     <img
-                      src="/GCASH.png"
+                      src={asset("/GCASH.png")}
                       alt="GCash QR Code"
                       className="gcash-qr"
                       onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
@@ -478,7 +479,7 @@ Please prepare this order for pickup.`,
         </div>
       )}
 
-      <Footer socialImg="/ellipse42596-lake-200h.png" />
+      <Footer socialImg={asset("/ellipse42596-lake-200h.png")} />
       <ScrollToTop />
     </>
   )

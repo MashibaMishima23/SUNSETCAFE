@@ -1,3 +1,4 @@
+import { asset } from '../lib/assetUrl'
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import Navbar from '../components/Navbar'
@@ -154,7 +155,7 @@ export default function Contact() {
         </div>
       </ScrollReveal>
 
-      <Footer socialImg="/ellipse42596-lake-200h.png" />
+      <Footer socialImg={asset("/ellipse42596-lake-200h.png")} />
       <ScrollToTop />
     </>
   )

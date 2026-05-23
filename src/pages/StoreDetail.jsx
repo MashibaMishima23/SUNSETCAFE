@@ -1,3 +1,4 @@
+import { asset } from '../lib/assetUrl'
 import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -13,14 +14,14 @@ const storeData = {
     coords: '8.822619, 125.101576',
     plusCode: 'Public Ground, R4C2+WHX, Gingoog City, Misamis Oriental',
     mapsUrl: 'https://maps.google.com/?q=8.822619,125.101576',
-    logo: '/untitled6x6in1721719-cnau-200h.png',
-    banner: '/rectangle231718-qwg-1500w.png',
+    logo: asset('/untitled6x6in1721719-cnau-200h.png'),
+    banner: asset('/rectangle231718-qwg-1500w.png'),
     photos: [
-      '/image6155098808171847113737527515550640825927474n11718-sm5e-600h.png',
-      '/image6155098808171847113737527515550640825927474n21718-b3yl-600h.png',
-      '/image6155098808171847113737527515550640825927474n31718-2ru8-600h.png',
+      asset('/image6155098808171847113737527515550640825927474n11718-sm5e-600h.png'),
+      asset('/image6155098808171847113737527515550640825927474n21718-b3yl-600h.png'),
+      asset('/image6155098808171847113737527515550640825927474n31718-2ru8-600h.png'),
     ],
-    socialImg: '/ellipse41718-tbc-200h.png',
+    socialimg: asset('/ellipse41718-tbc-200h.png'),
   },
   2: {
     name: 'Medina',
@@ -30,14 +31,14 @@ const storeData = {
     coords: '8.912873, 125.023833',
     plusCode: 'Medina, Misamis Oriental',
     mapsUrl: 'https://maps.google.com/?q=8.912873,125.023833',
-    logo: '/untitled6x6in1721719-cnau-200h.png',
-    banner: '/rectangle231718-qwg-1500w.png',
+    logo: asset('/untitled6x6in1721719-cnau-200h.png'),
+    banner: asset('/rectangle231718-qwg-1500w.png'),
     photos: [
-      '/image6515506748690617795193787258417531898554177n11602-0vvd-600h.png',
-      '/image6155098808171847113737527515550640825927474n21718-b3yl-600h.png',
-      '/image6155098808171847113737527515550640825927474n31718-2ru8-600h.png',
+      asset('/image6515506748690617795193787258417531898554177n11602-0vvd-600h.png'),
+      asset('/image6155098808171847113737527515550640825927474n21718-b3yl-600h.png'),
+      asset('/image6155098808171847113737527515550640825927474n31718-2ru8-600h.png'),
     ],
-    socialImg: '/ellipse41718-tbc-200h.png',
+    socialimg: asset('/ellipse41718-tbc-200h.png'),
   },
 }
 

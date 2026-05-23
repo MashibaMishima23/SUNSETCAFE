@@ -1,3 +1,4 @@
+import { asset } from '../lib/assetUrl'
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 
@@ -97,7 +98,7 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-search" ref={searchRef} style={{ position: 'relative' }}>
-        <img src="/search2596-gyjo.svg" alt="Search" />
+        <img src={asset("/search2596-gyjo.svg")} alt="Search" />
         <input
           type="text"
           placeholder="Search.."

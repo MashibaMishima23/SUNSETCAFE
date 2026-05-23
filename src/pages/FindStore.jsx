@@ -1,3 +1,4 @@
+import { asset } from '../lib/assetUrl'
 import { useRef, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
@@ -112,7 +113,7 @@ export default function FindStore() {
 
           {/* Mindanao map image */}
           <img
-            src="/MINDANAOMAP.png"
+            src={asset("/MINDANAOMAP.png")}
             alt="Mindanao Map"
             className="map-img"
             draggable={false}
@@ -198,7 +199,7 @@ export default function FindStore() {
         </section>
       </ScrollReveal>
 
-      <Footer socialImg="/ellipse41718-tbc-200h.png" />
+      <Footer socialImg={asset("/ellipse41718-tbc-200h.png")} />
       <ScrollToTop />
     </>
   )
